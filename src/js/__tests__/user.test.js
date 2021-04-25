@@ -1,16 +1,27 @@
-import { loadUser } from '../user';
-import { httpGet } from '../http';
+import getStatus from '../user';
 
-jest.mock('../http');
 
-beforeEach(() => {
-  jest.resetAllMocks();
+test('Health status check', () => {
+  const result = getStatus({ name: "Маг", health: 75 });
+  expect(result).toBe('healthy');
 });
 
-test('should call loadUser once', () => {
-  httpGet.mockReturnValue(JSON.stringify({}));
+test('Health status check', () => {
+  const result = getStatus({ name: "Маг", health: 50 });
+  expect(result).toBe('wounded');
+});
 
-  const response = loadUser(1);
-  expect(response).toEqual({});
-  expect(httpGet).toBeCalledWith('http://server:8080/users/1');
+test('Health status check', () => {
+  const result = getStatus({ name: "Маг", health: 20 });
+  expect(result).toBe('wounded');
+});
+
+test('Health status check', () => {
+  const result = getStatus({ name: "Маг", health: 15 });
+  expect(result).toBe('wounded');
+});
+
+test('Health status check', () => {
+  const result = getStatus({ name: "Маг", health: 10 });
+  expect(result).toBe('critical');
 });
