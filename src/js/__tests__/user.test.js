@@ -1,27 +1,16 @@
-import getStatus from '../user';
+import sort from '../user';
 
+test('ascending sorting check', () => {
+  const arrey = [
+    { name: 'мечник', health: 10 },
+    { name: 'маг', health: 100 },
+    { name: 'лучник', health: 80 },
+  ];
 
-test('Health status check', () => {
-  const result = getStatus({ name: 'Маг', health: 75 });
-  expect(result).toBe('healthy');
-});
-
-test('Health status check', () => {
-  const result = getStatus({ name: 'Маг', health: 50 });
-  expect(result).toBe('wounded');
-});
-
-test('Health status check', () => {
-  const result = getStatus({ name: 'Маг', health: 20 });
-  expect(result).toBe('wounded');
-});
-
-test('Health status check', () => {
-  const result = getStatus({ name: 'Маг', health: 15 });
-  expect(result).toBe('wounded');
-});
-
-test('Health status check', () => {
-  const result = getStatus({ name: 'Маг', health: 10 });
-  expect(result).toBe('critical');
+  const arreySort = [
+    { name: 'мечник', health: 10 },
+    { name: 'лучник', health: 80 },
+    { name: 'маг', health: 100 },
+  ];
+  expect(sort(arrey)).toEqual(arreySort);
 });

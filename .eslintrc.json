@@ -11,7 +11,7 @@
       "LabeledStatement",
       "WithStatement"
     ],
-    "no-console": "warn",
+    "no-console": "off",
     "eslint linebreak-style": [
       "error", "windows"
     ],
