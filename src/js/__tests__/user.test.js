@@ -13,4 +13,5 @@ test('ascending sorting check', () => {
     { name: 'маг', health: 100 },
   ];
   expect(sort(arrey)).toEqual(arreySort);
+  expect(sort(arrey)).not.toBe(arreySort);
 });
